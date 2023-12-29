@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UART 数据读取</title>
+</head>
+<body>
+    <h1>UART 数据显示</h1>
+    <div id="uartData">等待数据...</div>
+
+    <script>
+        setInterval(() => {
+            fetch('http://localhost:5000/data')  // 确保端口与Python服务器一致
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('uartData').innerText = data.data;
+                });
+        }, 1000); // 每秒更新一次数据
+    </script>
+</body>
+</html>
